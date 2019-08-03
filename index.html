@@ -90,7 +90,9 @@ var x = setInterval(function() {
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         var response = (this.responseText);
-        var truncated = response.substr(95, response.length - 5);
+        var start = response.search("Congratulations");
+        var end = response.length - 5;
+        var truncated = response.slice(start,end);
         document.getElementById("response").innerHTML = truncated;
         document.getElementById("response2").innerHTML = truncated;
       
