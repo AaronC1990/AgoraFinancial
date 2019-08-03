@@ -1,0 +1,483 @@
+<html lang="en">
+
+  <head>
+        
+        <title>Agora Financial</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+  </head>
+    
+  <script>
+// Set the date we're counting down to
+var countDownDate = new Date("Aug 8, 2019 0:0:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="timer"
+  document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "EXPIRED";
+  }
+}, 1000);
+      
+  //Sync Function for the first checkbox. Is called by the onchange event. 
+  function SyncCheck1(){
+      
+      //If the first checkbox is already checked, check the second box too.
+      if(document.getElementById("check1").checked == true && document.getElementById("check2").checked == false)
+          {              
+              document.getElementById("check2").checked = true;
+          }
+      
+      //If the first checkbox is not checked, uncheck the second box too.
+      if(document.getElementById("check1").checked == false && document.getElementById("check2").checked == true)
+          {              
+              document.getElementById("check2").checked = false;
+          }
+      
+  }
+  
+  //Sync Function for the second checkbox. Is called by the onchange event.
+  function SyncCheck2(){
+      
+      //If the second checkbox is already checked, check the first box too.
+      if(document.getElementById("check2").checked == true && document.getElementById("check1").checked == false)
+          {              
+              document.getElementById("check1").checked = true;
+          }
+      //If the second checkbox is not checked, uncheck the first box too.
+      if(document.getElementById("check2").checked == false && document.getElementById("check1").checked == true)
+          {              
+              document.getElementById("check1").checked = false;
+          }
+  }
+  
+  //Function that checks if both checkboxes are checked and if so makes an xhttp call and parses the response
+  function ButtonCheck(){
+      
+      if(document.getElementById("check1").checked == false && document.getElementById("check2").checked == false ){
+          
+          alert("Click the checkbox before proceding!");
+      }
+      if(document.getElementById("check1").checked == true && document.getElementById("check2").checked == true ){
+          
+          
+  //Makes the call to the external website          
+  function CallUrl() {
+ 
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        var response = (this.responseText);
+        var truncated = response.substr(95, response.length - 5);
+        document.getElementById("response").innerHTML = truncated;
+        document.getElementById("response2").innerHTML = truncated;
+      
+      
+    }
+  };
+        xhttp.open("GET", 'https://bl45immth4.execute-api.us-east-1.amazonaws.com/production/', true);
+        xhttp.send();
+}
+          
+    CallUrl();
+      }
+  }
+</script>
+    
+  <style>
+      
+      
+body{
+    margin: 0px; 
+    background-color: white;
+    font-family:"Lato", sans-serif;
+    font-family: arial, sans-serif;
+
+}
+
+.container-fluid{
+    
+    margin-top: 50px;
+    width: 750px;
+    
+    
+}
+
+.center{
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+}
+
+hr{
+    border: 1px solid #005282;
+}
+
+span{
+    color: #005282 
+}
+
+#intro{
+    font-size: 25;
+    font-weight: bold;
+}
+
+button{
+    width: 325;
+    background-color: #005282;
+    color: white;
+    padding-top: 10;
+    padding-bottom: 10;
+    padding-left: 50;
+    padding-right: 50;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#calendar{
+    height: auto; 
+    margin-bottom: 15px;
+    width: 
+    
+    
+}
+
+#date{
+    
+    padding: 20px;
+    background-color: #71a1be;
+    color: white;
+}
+
+#countdown{
+    
+    background-color: #71a1be;
+    color: white;
+    font-size: 15;
+    width:
+    
+    
+          
+      }
+      
+#timer{
+          
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 18pt;
+}
+      
+#info{
+    
+    background-color: lightgray;
+    height: auto;
+          
+}
+      
+#photo{
+    
+    background-color:  #05263a; 
+    color: white;
+    padding-top: 33px;
+    padding-left: 11px;
+    padding-right: 11px;
+          
+}
+
+#checklist.p{color: aliceblue;
+          
+}
+      
+.check{
+    
+    margin-top: 10px;
+    margin-bottom: 20px;
+          
+}
+      
+.checkp{
+          
+    margin-top: 5px;
+    
+}
+      
+#training{
+    margin-top: 15px;
+}
+      
+#warning{
+    background-color: #f58c99;
+    color: white;
+    font-weight: bolder;
+    height: auto;
+          
+         
+          
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 45;
+      }
+      
+#claim{
+          
+    color: white;
+    background-color: #05263a;
+    font-style: italic;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+      }
+      
+#footer{
+    
+    margin-bottom: 30px;
+      
+}
+      
+#triangle{
+          
+    width: 0; 
+    height: 0; 
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+  
+    border-top: 70px solid #05263a;
+    position: relative;
+    left: 36%;
+    
+          
+        
+          
+      }
+      #spacer{margin-left: -40}
+      
+@media only screen and (max-width: 500px) {
+    
+    #calendar{margin-bottom: 0px;}
+    #training{margin-top: 0px;}
+    #exclaim{display: none}
+    #warning{}
+    .container-fluid{width: auto;}
+    #spacer{display: none;}
+    #triangle{left: 25%}
+          
+      }
+      
+    
+      
+      
+      
+
+
+  
+    
+    
+  </style>
+    
+    <body>
+        
+        <div class="container-fluid">
+            
+            <div class="row" id="intro">
+                
+                <div class="col center">
+                    
+                    <p style="font-size: 12pt; font-weight: 300">
+                        
+                        Best-Selling Author and Gold Expert <br>
+                        Jim Rickards’ Presents…
+                        
+                    </p>
+                    
+                    <hr> 
+                        
+                                               
+                    
+                        <p>
+ 
+                        “In just days a Never-Before- Seen Gold Anomaly 
+                        Will Create a Totally New Class of Penny Gold Stocks...<br><br>
+                        I’ve Enlisted One of the World’s Top Geologists 
+                        to Help Me Reveal... Live on Camera… What This 
+                            Coming <span>Gold Mega-Catalyst</span> Is And How You Could Make 
+                            as Much as <span>$101,000 in Profit.”</span>
+                            
+                    </p>
+                    
+                    <div style="font-weight: 300; font-size: 12pt"><input type="checkbox" name="newsletter" value="Yes" id="check1" onchange="SyncCheck1()"> I would like to recieve a free newsletter<br><br></div>
+                    
+                    <button style="font-weight: 100; font-size: 12pt" onclick="ButtonCheck()">Register for this FREE <br>live Webinar Here!</button>
+                    
+                    <div id="response" style="color: black"></div>
+                    
+                    
+                
+                </div>
+            
+            </div>
+            
+            <br>            
+            
+            <div class="row justify-space-around" id="calendar">
+                
+                <div class="col-md center" id="date">
+                    
+                    <img src="RGS_Hotlist_0617_Calendar.png" width="75"><br><br>
+                    
+                    May 29th<br>
+                    
+                    at 5:00 PM EDT
+                
+                </div>
+                
+                <div class="col-md-1" id="spacer"></div>
+                
+                <div class="col-md-8 center" id="countdown"><br>TIME LEFT UNTIL THE WEBINAR STARTS...
+                
+                <div id="timer">
+                    
+                </div>
+                
+                </div>
+                
+            </div>
+            
+            <div class="row" id="info">
+                
+                <div class="col-md-6 center" id="photo">
+                    
+                    <img src="RGS_Hotlist_0617_JimRickards.png" width=300px>
+                    
+                    
+                    <p style="font-size: 12pt; margin-top: 10; font-style: italic">Presented by best-selling author and gold expert...</p> 
+                    
+                    <p style="font-size: 20pt">JAMES G. RICKARDS</p>
+                
+                
+                </div>
+                
+                <div class="col-md-6" id="checklist">
+                    
+                    <div class="center" style="margin-top: 15px;"><p><b>I'm going to show you...</b></p></div>
+                    
+                    <div class="row check">
+                    <div class="col-2"><img src="RGS_Hotlist_0617_CheckmarkBox.png" width=55></div>
+                    
+                    <div class="col checkp">How a class of "off-limit" gold stocks could become fair game and shoot up in price...</div></div>
+                    
+                    <div class="row check">
+                    <div class="col-2"><img src="RGS_Hotlist_0617_CheckmarkBox.png" width=55></div>
+                    
+                    <div class="col checkp">Why just as many gold stocks could be CRUSHED. But this isn't a bad thing. In fact, it's going to open up a unique opportunity not seen in years...</div></div>
+                    
+                    <div class="row check">
+                    <div class="col-2"><img src="RGS_Hotlist_0617_CheckmarkBox.png" width=55></div>
+                    
+                    <div class="col checkp">How it could compound an announcement from the Federal Reserve next week that could send physical gold prices much higher...</div></div>
+                    
+                    <div class="row check">
+                    <div class="col-2"><img src="RGS_Hotlist_0617_CheckmarkBox.png" width=55></div>
+                    
+                    <div class="col checkp">Why you'll hear predictions of doom for the gold market(it's important that you understand the truth and know the real profit opportunity that's being set up)...</div></div>
+                    
+                    <div class="row check">
+                    <div class="col-2"><img src="RGS_Hotlist_0617_CheckmarkBox.png" width=55></div>
+                    
+                    <div class="col checkp">Why we may see confirmation that gold will make a run at $2,000 sooner than anyone thinks...</div></div>
+                
+                </div> 
+            
+            
+            
+            </div>
+            
+            <div class="row" id="training">
+                
+                <div class="col-md-12" id="warning">
+                    
+                <img src="RGS_Hotlist_0617_Warning.png" width=35 id="exclaim">
+                
+                WARNING: SPACE IS LIMITED & THESE LIVE TRAININGS ALWAYS FILL UP
+                
+                </div>
+                
+                <div class="col-md-12" id="claim">
+                    
+                    Claim your spot below before it's too late!
+                    
+                    
+                
+                </div>
+                
+                <div class="center" id="triangle"></div>          
+            
+            
+            </div>
+            
+            <div class="col-md-12 center" id="footer">
+                
+                <div><input type="checkbox" name="newsletter" value="Yes" id="check2" onchange="SyncCheck2()">    I would like to recieve a free newsletter<br><br></div>
+                    
+                    <button onclick="ButtonCheck()">YES! Reserve My Spot Now! >></button><br>
+                
+                    <div id="response2" style="color: black"></div>
+            
+            
+            </div>
+                
+                
+            
+            
+                
+            
+            
+            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
+    
+    <!-- Bootstrap Javascript -->        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
